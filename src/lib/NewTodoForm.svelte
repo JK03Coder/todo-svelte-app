@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 </script>
 
 <form class="flex flex-col gap-2 mb-6">
@@ -8,6 +8,7 @@
 			class="w-full rounded-md border-2 border-blue-400 bg-blue-400/50 py-0.5 pl-1.5 text-black shadow shadow-blue-400/40 outline-none transition-all placeholder:text-blue-400 focus:shadow-blue-400/90 dark:text-white"
 			type="text"
 			id="item"
+			placeholder="add an item"
 		/>
 	</div>
 	<button
