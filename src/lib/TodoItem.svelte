@@ -1,9 +1,14 @@
 <script lang="ts">
-  // export let id: string;
+  import { todos } from "./stores";
+
+  export let id: string;
   export let title: string;
   export let completed: boolean = false;
+  $: todos.setCompleted(id, completed);
 
-	
+  function handleDelete() {
+    todos.deleteTodo(id);
+  }
 </script>
 
 <li class="flex">
@@ -20,6 +25,6 @@
   <button
     type="button"
     class="h-min select-none self-center rounded-md border-2 border-red-500 bg-red-500/50 px-2.5 py-0.5 text-red-500 shadow shadow-red-500/40 transition-all hover:bg-red-500/60 hover:shadow-red-500/90"
-    >Delete</button
+    on:click={handleDelete}>Delete</button
   >
 </li>

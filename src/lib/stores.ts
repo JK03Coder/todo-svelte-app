@@ -7,25 +7,7 @@ interface Todo {
 }
 
 function createTodos() {
-  const tempTodos: Todo[] = [
-    {
-      id: crypto.randomUUID(),
-      title: "random title",
-      completed: false,
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "second thing",
-      completed: false,
-    },
-    {
-      id: crypto.randomUUID(),
-      title: "third item",
-      completed: false,
-    },
-  ]
-  // const { subscribe, set, update } = writable([] as Todo[]);
-  const { subscribe, set, update } = writable(tempTodos);
+  const { subscribe, set, update } = writable([] as Todo[]);
 
   return {
     subscribe,
@@ -37,7 +19,17 @@ function createTodos() {
       }
       return todos;
     }),
-
+    setCompleted: (id: string, completed: boolean) => update((todos: Todo[]) => {
+      const index = todos.findIndex(todo => todo.id === id);
+      todos[index].completed = completed;
+      return todos
+    }),
+    deleteTodo: (id: string) => update((todos: Todo[]) => {
+      const index = todos.findIndex(todo => todo.id === id);
+      todos.splice(index, 1);
+      return todos
+    }),
+    clearTodos: () => set([]),
   };
 }
 
