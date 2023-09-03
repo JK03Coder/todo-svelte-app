@@ -1,11 +1,11 @@
-<script lang="js">
+<script lang="ts">
   import TodoItem from "$lib/TodoItem.svelte";
-  export let completedType= false;
-  export const todos;
+  import { todos } from "./stores";
+  export let completedType = false;
 </script>
 
 <ul class="flex flex-col gap-2">
-  {#each todos as todo (todo.id)}
+  {#each $todos as todo (todo.id)}
     {#if todo.completed === completedType}
       <TodoItem {...todo} />
     {/if}
