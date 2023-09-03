@@ -8,15 +8,16 @@ interface Todo {
 
 function createTodos() {
   const { subscribe, set, update } = writable([] as Todo[]);
-
+  let idCount: number = 1;
   return {
     subscribe,
     addTodo: (title: string) => update((todos: Todo[]) => {
       todos[todos.length] = {
-        id: crypto.randomUUID(),
+        id: String(idCount),
         title,
         completed: false,
       }
+      idCount++;
       return todos;
     }),
     setCompleted: (id: string, completed: boolean) => update((todos: Todo[]) => {

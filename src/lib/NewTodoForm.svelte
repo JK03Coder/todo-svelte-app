@@ -24,7 +24,12 @@
   <button
     class="select-none rounded-md border-2 border-blue-500 bg-blue-500/50 py-0.5 font-semibold text-blue-500 shadow shadow-blue-500/40 transition-all hover:bg-blue-500/60 hover:shadow-blue-500/90"
     type="submit"
-  >
-    Add
+    >Add
   </button>
+  <!-- <button
+    class="select-none w-20 rounded-md border-2 border-violet-500 bg-violet-500/50 py-0.5 font-semibold text-violet-500 shadow shadow-violet-500/40 transition-all hover:bg-violet-500/60 hover:shadow-violet-500/90"
+    type="button"
+    on:click={todos.clearTodos}
+    >Clear
+  </button> -->
 </form>
