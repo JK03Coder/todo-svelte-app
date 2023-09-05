@@ -5,7 +5,7 @@
 
   function handleNewTodo() {
     if (todoValue.trim() === "") return;
-    todos.addTodo(todoValue);
+    todos.add(todoValue);
     todoValue = "";
   }
 </script>

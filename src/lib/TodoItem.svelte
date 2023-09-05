@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   import { todos } from "./stores";
 
   export let id: string;
@@ -7,14 +8,14 @@
   $: todos.setCompleted(id, completed);
 
   function handleDelete() {
-    todos.deleteTodo(id);
+    todos.delete(id);
   }
 </script>
 
-<li class="flex">
+<li class="flex" transition:fade|global>
   <label
-    class="mr-2 flex-1 cursor-pointer select-none rounded-md border-2 bg-gray-50 px-2.5 py-0.5 text-black shadow shadow-gray-400/40 transition-all hover:bg-gray-100/80 hover:shadow-gray-400/90 dark:bg-white/30 dark:text-white dark:hover:bg-white/40
-		{completed ? 'line-through' : ''}"
+    class="mr-2 flex-1 cursor-pointer select-none rounded-md border-2 bg-gray-50 px-2.5 py-0.5 text-black shadow shadow-gray-400/40 transition-all hover:bg-gray-100/80 hover:shadow-gray-400/90 dark:bg-white/30 dark:text-white dark:hover:bg-white/40"
+    class:line-through={completed}
   >
     <input
       class="mr-1.5 cursor-pointer align-baseline"
