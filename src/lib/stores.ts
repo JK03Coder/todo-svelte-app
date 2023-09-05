@@ -64,3 +64,5 @@ if (browser) {
     localStorage.setItem("todos", JSON.stringify(todosValue))
   );
 }
+
+export const animSpeed = writable(400);

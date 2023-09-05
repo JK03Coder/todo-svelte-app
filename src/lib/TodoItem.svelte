@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { todos } from "./stores";
+  import { animSpeed, todos } from "./stores";
 
   export let id: string;
   export let title: string;
@@ -12,7 +12,7 @@
   }
 </script>
 
-<li class="flex" transition:fade|global>
+<li class="flex" in:fade|global={{ duration: $animSpeed}}>
   <label
     class="mr-2 flex-1 cursor-pointer select-none rounded-md border-2 bg-gray-50 px-2.5 py-0.5 text-black shadow shadow-gray-400/40 transition-all hover:bg-gray-100/80 hover:shadow-gray-400/90 dark:bg-white/30 dark:text-white dark:hover:bg-white/40"
     class:line-through={completed}
