@@ -2,6 +2,7 @@
   import { fade } from 'svelte/transition';
   import { animSpeed, firstLoad, todos } from './stores';
   import { afterNavigate } from '$app/navigation';
+  import { Trash2 } from 'lucide-svelte';
 
   export let id: string;
   export let title: string;
@@ -38,8 +39,8 @@
     </label>
     <button
       type="button"
-      class="h-min select-none self-center rounded-md border-2 border-red-500 bg-red-500/50 px-2.5 py-0.5 text-red-500 shadow shadow-red-500/40 transition-all hover:bg-red-500/60 hover:shadow-red-500/90"
-      on:click={handleDelete}>Delete</button
+      class="h-min select-none flex justify-center items-center gap-0.5 self-center rounded-md border-2 border-red-500 bg-red-500/50 px-2 py-0.5 text-red-500 shadow shadow-red-500/40 transition-all hover:bg-red-500/60 hover:shadow-red-500/90"
+      on:click={handleDelete}>Delete<Trash2 class="h-4 w-4"/></button
     >
   </li>
 {/if}
