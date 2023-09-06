@@ -4,7 +4,9 @@
   import { animSpeed, firstLoad, todos } from '$lib/stores';
   import { fade } from 'svelte/transition';
   import { afterUpdate, beforeUpdate } from 'svelte';
+  // @ts-ignore
   import { gsap } from 'gsap/dist/gsap';
+  // @ts-ignore
   import { Flip } from 'gsap/dist/Flip';
 
   gsap.registerPlugin(Flip);
