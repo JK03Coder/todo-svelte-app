@@ -5,9 +5,9 @@
 </script>
 
 <ul class="flex flex-col gap-2" data-flip-id="list-{completedType}">
-  {#each $todos as todo (todo.id)}
+  {#each $todos as todo, index (todo.id)}
     {#if todo.completed === completedType}
-      <TodoItem {...todo} />
+      <TodoItem {...todo} {index} />
     {/if}
   {/each}
 </ul>

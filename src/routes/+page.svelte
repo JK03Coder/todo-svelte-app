@@ -1,12 +1,11 @@
 <script lang="ts">
   import NewTodoForm from '$lib/NewTodoForm.svelte';
   import TodoList from '$lib/TodoList.svelte';
-  import { animSpeed, todos } from '$lib/stores';
+  import { animSpeed, firstLoad, todos } from '$lib/stores';
   import { fade } from 'svelte/transition';
   import { afterUpdate, beforeUpdate } from 'svelte';
   import { gsap } from 'gsap/dist/gsap';
   import { Flip } from 'gsap/dist/Flip';
-  import { elasticOut } from 'svelte/easing';
 
   gsap.registerPlugin(Flip);
 
@@ -25,7 +24,7 @@
     Flip.from(state, {
       targets: 'hr, li',
       duration: $animSpeed/1000,
-      ease: 'elastic(1, 0.7).Out',
+      ease: 'elastic(1, 0.7).out',
     });
   });
 </script>
@@ -35,7 +34,7 @@
   <h1 class="my-2 text-2xl font-medium dark:text-white">Todo List</h1>
   <div class="flex flex-col">
     <TodoList completedType={false} />
-    {#if !$todos.some((todo) => !todo.completed)}
+    {#if !$todos.some((todo) => !todo.completed) && !$firstLoad}
       <p
         class="dark:text-white"
       >
