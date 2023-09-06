@@ -1,8 +1,33 @@
 <script lang="ts">
-  import NewTodoForm from "$lib/NewTodoForm.svelte";
-  import TodoList from "$lib/TodoList.svelte";
-  import { animSpeed, todos } from "$lib/stores";
-  import { slide } from "svelte/transition";
+  import NewTodoForm from '$lib/NewTodoForm.svelte';
+  import TodoList from '$lib/TodoList.svelte';
+  import { animSpeed, todos } from '$lib/stores';
+  import { fade } from 'svelte/transition';
+  import { afterUpdate, beforeUpdate } from 'svelte';
+  import { gsap } from 'gsap/dist/gsap';
+  import { Flip } from 'gsap/dist/Flip';
+  import { elasticOut } from 'svelte/easing';
+
+  gsap.registerPlugin(Flip);
+
+  let state: Flip.FlipState;
+  let isState: boolean = true;
+
+  beforeUpdate(() => {
+    if (isState) {
+      state = Flip.getState('hr, li');
+      isState = false;
+    }
+  });
+
+  afterUpdate(() => {
+    isState = true;
+    Flip.from(state, {
+      targets: 'hr, li',
+      duration: $animSpeed/1000,
+      ease: 'elastic(1, 0.7).Out',
+    });
+  });
 </script>
 
 <div class="mx-auto max-w-md p-6">
@@ -11,10 +36,18 @@
   <div class="flex flex-col">
     <TodoList completedType={false} />
     {#if !$todos.some((todo) => !todo.completed)}
-      <p class="dark:text-white" transition:slide={{ duration: $animSpeed }}>You have nothing to do</p>
+      <p
+        class="dark:text-white"
+      >
+        You have nothing to do
+      </p>
     {/if}
     {#if $todos.some((todo) => todo.completed)}
-      <hr class="my-6 h-0.5 rounded border-0 bg-gray-300 dark:bg-gray-600" transition:slide={{ duration: $animSpeed }}/>
+      <hr
+        class="my-6 h-0.5 rounded border-0 bg-gray-300 dark:bg-gray-600"
+        data-flip-id="line"
+        transition:fade={{ duration: $animSpeed }}
+      />
     {/if}
     <TodoList completedType={true} />
   </div>

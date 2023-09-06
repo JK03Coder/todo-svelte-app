@@ -1,6 +1,7 @@
-import { browser } from "$app/environment";
-import { get, writable } from "svelte/store";
-import { z } from "zod";
+import { browser } from '$app/environment';
+import type { FlipParams } from 'svelte/animate';
+import { get, writable } from 'svelte/store';
+import { z } from 'zod';
 
 interface Todo {
   id: string;
@@ -17,7 +18,7 @@ const TodoSchema = z.object({
 function createTodos() {
   let defaultValue: Todo[] = [];
   if (browser) {
-    const tempValue = localStorage.getItem("todos");
+    const tempValue = localStorage.getItem('todos');
     if (tempValue !== null) {
       const parsedValue = JSON.parse(tempValue);
       if (Array.isArray(parsedValue)) {
@@ -61,7 +62,7 @@ export const todos = createTodos();
 
 if (browser) {
   todos.subscribe((todosValue) =>
-    localStorage.setItem("todos", JSON.stringify(todosValue))
+    localStorage.setItem('todos', JSON.stringify(todosValue))
   );
 }
 

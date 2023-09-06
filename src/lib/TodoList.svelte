@@ -4,7 +4,7 @@
   export let completedType = false;
 </script>
 
-<ul class="flex flex-col gap-2">
+<ul class="flex flex-col gap-2" data-flip-id="list-{completedType}">
   {#each $todos as todo (todo.id)}
     {#if todo.completed === completedType}
       <TodoItem {...todo} />
