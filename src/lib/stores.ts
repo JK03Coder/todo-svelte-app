@@ -67,4 +67,4 @@ if (browser) {
 }
 
 export const animSpeed = writable(400);
-export let firstLoad = writable(false);
+export let firstLoad = writable(true);

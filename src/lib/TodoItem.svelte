@@ -24,6 +24,7 @@
   });
 </script>
 
+{@debug $firstLoad}
 {#if !$firstLoad}
   <li class="flex" data-flip-id="todo-{id}" in:fade={{ duration, delay }}>
     <label
