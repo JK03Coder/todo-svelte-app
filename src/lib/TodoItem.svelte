@@ -14,10 +14,11 @@
     todos.delete(id);
   }
 
-  let duration: number = $animSpeed;
-  let delay: number = 0;
+  let duration: number;
+  let delay: number;
 
   afterNavigate(({ from }) => {
+    duration = from === null ? $animSpeed : 0;
     delay = from === null ? ($animSpeed/4) * (index) : 0;
     $firstLoad = false;
   });
