@@ -49,8 +49,8 @@
     {#if !$todos.some((todo) => !todo.completed)}
       <p
         class="dark:text-white"
-        in:fade
-        out:fade={{duration: 0}}
+        in:fade={{ duration: $animSpeed }}
+        out:fade={{ duration: 0 }}
       >
         You have nothing to do
       </p>
