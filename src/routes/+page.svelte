@@ -29,6 +29,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>Todo List</title>
+</svelte:head>
+
 <div class="mx-auto max-w-md p-6">
   <NewTodoForm />
   <h1 class="my-2 text-2xl font-medium dark:text-white">Todo List</h1>
