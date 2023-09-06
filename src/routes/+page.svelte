@@ -3,7 +3,7 @@
   import TodoList from '$lib/TodoList.svelte';
   import { animSpeed, firstLoad, todos } from '$lib/stores';
   import { fade } from 'svelte/transition';
-  import { afterUpdate, beforeUpdate } from 'svelte';
+  import { afterUpdate, beforeUpdate, onMount } from 'svelte';
   // @ts-ignore
   import { gsap } from 'gsap/dist/gsap';
   // @ts-ignore
@@ -20,6 +20,10 @@
       isState = false;
     }
   });
+
+  onMount(() => {
+    $firstLoad = true;
+  })
 
   afterUpdate(() => {
     isState = true;
