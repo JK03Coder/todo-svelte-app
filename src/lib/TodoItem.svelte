@@ -14,12 +14,10 @@
     todos.delete(id);
   }
 
-  let duration: number;
-  let delay: number;
+  let duration: number = $animSpeed;
+  let delay: number = 0;
 
   afterNavigate(({ from }) => {
-    // only animate if the navigation came from outside the page
-    duration = from === null ? $animSpeed : 0;
     delay = from === null ? ($animSpeed/4) * (index) : 0;
     $firstLoad = false;
   });

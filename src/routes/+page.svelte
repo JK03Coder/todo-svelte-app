@@ -44,9 +44,11 @@
   <h1 class="my-2 text-2xl font-medium dark:text-white">Todo List</h1>
   <div class="flex flex-col">
     <TodoList completedType={false} />
-    {#if !$todos.some((todo) => !todo.completed) && !$firstLoad}
+    {#if !$todos.some((todo) => !todo.completed)}
       <p
         class="dark:text-white"
+        in:fade
+        out:fade={{duration: 0}}
       >
         You have nothing to do
       </p>
